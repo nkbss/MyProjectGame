@@ -12,22 +12,21 @@ public class GameScreen extends ScreenAdapter{
 	private HelpmanGame helpmanGame;
 	private Texture helpmanImg;
 	private Helpman helpman;
+	World world;
+	WorldRenderer worldRenderer;
 	public GameScreen(HelpmanGame helpmanGame) {
 	       this.helpmanGame = helpmanGame;
 	       helpmanImg = new Texture("dot.png");
-	       helpman = new Helpman(100,100);
+	       world = new World(helpmanGame);
+	       worldRenderer = new WorldRenderer(helpmanGame,world);
 	}
-		public void render(float delta) {
+	 public void render(float delta) {
 	        update(delta);
 	        Gdx.gl.glClearColor(0, 0, 0, 1);
 	        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-			SpriteBatch batch = helpmanGame.batch;
-	        batch.begin();
-	        Vector2 pos = helpman.getPosition();
-	        batch.draw(helpmanImg, pos.x, pos.y);
-	        batch.end();
+	        worldRenderer.render(delta);
 	    }
-		 private void update(float delta) {
+			public void update(float delta) {
 		        if(Gdx.input.isKeyPressed(Keys.UP)) {
 		            helpman.move(Helpman.DIRECTION_UP);
 		        }
