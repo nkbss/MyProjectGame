@@ -17,6 +17,7 @@ public class Helpman {
         {0,1},
         {-1,0}
     };
+
     public void move(int dir) { 
     	 position.x += SPEED * DIR_OFFSETS[dir][0];
          position.y += SPEED * DIR_OFFSETS[dir][1];

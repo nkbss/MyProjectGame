@@ -21,7 +21,7 @@ public class WorldRenderer {
         helpman = world.getHelpman();
 	}
 	public void render(float delta) {
-		SpriteBatch batch = helpmanGame.batch;
+			batch = helpmanGame.batch;
 	        batch.begin();
 	        Vector2 pos = world.getHelpman().getPosition();
 	        batch.draw(helpmanImg, pos.x, pos.y);

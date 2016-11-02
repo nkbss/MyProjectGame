@@ -20,24 +20,25 @@ public class GameScreen extends ScreenAdapter{
 	       world = new World(helpmanGame);
 	       worldRenderer = new WorldRenderer(helpmanGame,world);
 	}
-	 public void render(float delta) {
+	public void update(float delta) {
+        Helpman helpman = world.getHelpman();
+		if(Gdx.input.isKeyPressed(Keys.DOWN)) {
+            helpman.move(Helpman.DIRECTION_UP);
+        }
+        if(Gdx.input.isKeyPressed(Keys.UP)) {
+            helpman.move(Helpman.DIRECTION_DOWN);
+        }
+        if(Gdx.input.isKeyPressed(Keys.RIGHT)) {
+            helpman.move(Helpman.DIRECTION_RIGHT);
+        }
+        if(Gdx.input.isKeyPressed(Keys.LEFT)) {
+            helpman.move(Helpman.DIRECTION_LEFT);
+        }
+ } 
+	public void render(float delta) {
 	        update(delta);
 	        Gdx.gl.glClearColor(0, 0, 0, 1);
 	        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 	        worldRenderer.render(delta);
 	    }
-			public void update(float delta) {
-		        if(Gdx.input.isKeyPressed(Keys.UP)) {
-		            helpman.move(Helpman.DIRECTION_UP);
-		        }
-		        if(Gdx.input.isKeyPressed(Keys.DOWN)) {
-		            helpman.move(Helpman.DIRECTION_DOWN);
-		        }
-		        if(Gdx.input.isKeyPressed(Keys.RIGHT)) {
-		            helpman.move(Helpman.DIRECTION_RIGHT);
-		        }
-		        if(Gdx.input.isKeyPressed(Keys.LEFT)) {
-		            helpman.move(Helpman.DIRECTION_LEFT);
-		        }
-		 }
 }
