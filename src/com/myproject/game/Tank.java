@@ -2,7 +2,7 @@ package com.myproject.game;
 
 import com.badlogic.gdx.math.Vector2;
 
-public class Helpman {
+public class Tank {
 	private Vector2 position;
 	public static final int DIRECTION_UP = 1;
     public static final int DIRECTION_RIGHT = 2;
@@ -22,7 +22,7 @@ public class Helpman {
     	 position.x += SPEED * DIR_OFFSETS[dir][0];
          position.y += SPEED * DIR_OFFSETS[dir][1];
     }
-    public Helpman(int x, int y) {
+    public Tank(int x, int y) {
         position = new Vector2(x,y);
     }    
  

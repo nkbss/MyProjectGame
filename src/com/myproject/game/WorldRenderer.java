@@ -7,27 +7,27 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 
 public class WorldRenderer {
-	private HelpmanGame helpmanGame;
-	private Texture helpmanImg;
-	private Helpman helpman;
+	private TankGame tankGame;
+	private Texture tankImg;
+	private Tank tank;
 	public SpriteBatch batch;
 	public GameScreen gameScreen;
 	World world;
 	private StageRenderer stageRenderer;
-	public WorldRenderer(HelpmanGame helpmanGame, World world) {
-        this.helpmanGame = helpmanGame;
-        batch = helpmanGame.batch;
+	public WorldRenderer(TankGame tankGame, World world) {
+        this.tankGame = tankGame;
+        batch = tankGame.batch;
         this.world = world;
-        helpmanImg = new Texture("tank.png");
-        helpman = world.getHelpman();
+        tankImg = new Texture("tank.png");
+        tank = world.getTank();
         stageRenderer = new StageRenderer(batch,world.getStage());
 	}
 	public void render(float delta) {
 			stageRenderer.render();
-			batch = helpmanGame.batch;
+			batch = tankGame.batch;
 	        batch.begin();
-	        Vector2 pos = world.getHelpman().getPosition();
-	        batch.draw(helpmanImg, pos.x, pos.y);
+	        Vector2 pos = world.getTank().getPosition();
+	        batch.draw(tankImg, pos.x, pos.y);
 	        batch.end();
 		}
 	

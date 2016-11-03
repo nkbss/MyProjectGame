@@ -1,10 +1,8 @@
 package com.myproject.game;
-
-
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-public class HelpmanGame extends Game
+public class TankGame extends Game
 {
 	 public SpriteBatch batch;
 	 public static final int HEIGHT = 600;

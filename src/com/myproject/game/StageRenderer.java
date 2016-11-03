@@ -19,7 +19,7 @@ public class StageRenderer {
         for(int r = 0; r < stage.getHeight(); r++) {
             for(int c = 0; c < stage.getWidth(); c++) {
                 int x = c * 40;
-                int y = HelpmanGame.HEIGHT - (r * 40) - 40;
+                int y = TankGame.HEIGHT - (r * 40) - 40;
                 if(stage.hasWallAt(r, c)) {
                     batch.draw(wallImage, x, y);
                 } /*else if(stage.hasDotAt(r, c)) {

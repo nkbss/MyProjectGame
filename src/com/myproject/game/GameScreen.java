@@ -9,30 +9,30 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 
 public class GameScreen extends ScreenAdapter{
-	private HelpmanGame helpmanGame;
-	private Texture helpmanImg;
-	private Helpman helpman;
+	private TankGame tankGame;
+	private Texture tankImg;
+	private Tank tank;
 	World world;
 	WorldRenderer worldRenderer;
-	public GameScreen(HelpmanGame helpmanGame) {
-	       this.helpmanGame = helpmanGame;
-	       helpmanImg = new Texture("tank.png");
-	       world = new World(helpmanGame);
-	       worldRenderer = new WorldRenderer(helpmanGame,world);
+	public GameScreen(TankGame tankGame) {
+	       this.tankGame = tankGame;
+	       tankImg = new Texture("tank.png");
+	       world = new World(tankGame);
+	       worldRenderer = new WorldRenderer(tankGame,world);
 	}
 	public void update(float delta) {
-        Helpman helpman = world.getHelpman();
+        Tank tank = world.getTank();
 		if(Gdx.input.isKeyPressed(Keys.DOWN)) {
-            helpman.move(Helpman.DIRECTION_UP);
+            tank.move(Tank.DIRECTION_UP);
         }
         if(Gdx.input.isKeyPressed(Keys.UP)) {
-            helpman.move(Helpman.DIRECTION_DOWN);
+            tank.move(Tank.DIRECTION_DOWN);
         }
         if(Gdx.input.isKeyPressed(Keys.RIGHT)) {
-            helpman.move(Helpman.DIRECTION_RIGHT);
+            tank.move(Tank.DIRECTION_RIGHT);
         }
         if(Gdx.input.isKeyPressed(Keys.LEFT)) {
-            helpman.move(Helpman.DIRECTION_LEFT);
+            tank.move(Tank.DIRECTION_LEFT);
         }
  } 
 	public void render(float delta) {
