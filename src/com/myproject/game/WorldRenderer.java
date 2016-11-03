@@ -13,14 +13,17 @@ public class WorldRenderer {
 	public SpriteBatch batch;
 	public GameScreen gameScreen;
 	World world;
+	private StageRenderer stageRenderer;
 	public WorldRenderer(HelpmanGame helpmanGame, World world) {
         this.helpmanGame = helpmanGame;
         batch = helpmanGame.batch;
         this.world = world;
         helpmanImg = new Texture("dot.png");
         helpman = world.getHelpman();
+        stageRenderer = new StageRenderer(batch,world.getStage());
 	}
 	public void render(float delta) {
+			stageRenderer.render();
 			batch = helpmanGame.batch;
 	        batch.begin();
 	        Vector2 pos = world.getHelpman().getPosition();
