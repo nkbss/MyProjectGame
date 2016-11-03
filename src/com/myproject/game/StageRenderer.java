@@ -22,9 +22,9 @@ public class StageRenderer {
                 int y = HelpmanGame.HEIGHT - (r * 40) - 40;
                 if(stage.hasWallAt(r, c)) {
                     batch.draw(wallImage, x, y);
-                } else if(stage.hasDotAt(r, c)) {
+                } /*else if(stage.hasDotAt(r, c)) {
                     batch.draw(dotImage, x, y);
-                }
+                }*/
             }
         }
         batch.end();

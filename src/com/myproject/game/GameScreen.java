@@ -16,7 +16,7 @@ public class GameScreen extends ScreenAdapter{
 	WorldRenderer worldRenderer;
 	public GameScreen(HelpmanGame helpmanGame) {
 	       this.helpmanGame = helpmanGame;
-	       helpmanImg = new Texture("dot.png");
+	       helpmanImg = new Texture("tank.png");
 	       world = new World(helpmanGame);
 	       worldRenderer = new WorldRenderer(helpmanGame,world);
 	}

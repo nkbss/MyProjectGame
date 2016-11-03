@@ -18,7 +18,7 @@ public class WorldRenderer {
         this.helpmanGame = helpmanGame;
         batch = helpmanGame.batch;
         this.world = world;
-        helpmanImg = new Texture("dot.png");
+        helpmanImg = new Texture("tank.png");
         helpman = world.getHelpman();
         stageRenderer = new StageRenderer(batch,world.getStage());
 	}
