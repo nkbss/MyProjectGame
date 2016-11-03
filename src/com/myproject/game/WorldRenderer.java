@@ -1,6 +1,7 @@
 package com.myproject.game;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -18,7 +19,7 @@ public class WorldRenderer {
         this.tankGame = tankGame;
         batch = tankGame.batch;
         this.world = world;
-        tankImg = new Texture("tank.png");
+        tankImg = GameScreen.setImg();
         tank = world.getTank();
         stageRenderer = new StageRenderer(batch,world.getStage());
 	}
@@ -30,5 +31,4 @@ public class WorldRenderer {
 	        batch.draw(tankImg, pos.x, pos.y);
 	        batch.end();
 		}
-	
 }
