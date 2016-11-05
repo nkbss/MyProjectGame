@@ -19,12 +19,12 @@ public class WorldRenderer {
         this.tankGame = tankGame;
         batch = tankGame.batch;
         this.world = world;
-        tankImg = GameScreen.setImg();
         tank = world.getTank();
         stageRenderer = new StageRenderer(batch,world.getStage());
 	}
 	public void render(float delta) {
 			stageRenderer.render();
+			tankImg = GameScreen.setImg();
 			batch = tankGame.batch;
 	        batch.begin();
 	        Vector2 pos = world.getTank().getPosition();
