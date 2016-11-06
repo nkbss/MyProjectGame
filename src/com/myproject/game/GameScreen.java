@@ -21,18 +21,19 @@ public class GameScreen extends ScreenAdapter{
 	       worldRenderer = new WorldRenderer(tankGame,world);
 	}
 	public void update(float delta) {
-        Tank tank = world.getTank();
+		Tank tank = world.getTank();
+		world.update(delta);
 		if(Gdx.input.isKeyPressed(Keys.DOWN)) {
-            tank.move(Tank.DIRECTION_UP);
+            tank.setNextDirection(Tank.DIRECTION_DOWN);
 		}
         if(Gdx.input.isKeyPressed(Keys.UP)) {
-            tank.move(Tank.DIRECTION_DOWN);
+            tank.setNextDirection(Tank.DIRECTION_UP);
         }
         if(Gdx.input.isKeyPressed(Keys.RIGHT)) {
-            tank.move(Tank.DIRECTION_RIGHT);
+            tank.setNextDirection(Tank.DIRECTION_RIGHT);
         }
         if(Gdx.input.isKeyPressed(Keys.LEFT)) {
-            tank.move(Tank.DIRECTION_LEFT);
+            tank.setNextDirection(Tank.DIRECTION_LEFT);
         }
  } 
 	public void render(float delta) {

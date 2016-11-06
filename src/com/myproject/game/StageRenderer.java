@@ -23,8 +23,8 @@ public class StageRenderer {
 		batch.begin();
         for(int r = 0; r < stage.getHeight(); r++) {
             for(int c = 0; c < stage.getWidth(); c++) {
-                int x = c * 50;
-                int y = TankGame.HEIGHT - (r * 50) - 50;
+                int x = c * WorldRenderer.BLOCK_SIZE;
+                int y = TankGame.HEIGHT - (r * WorldRenderer.BLOCK_SIZE) - WorldRenderer.BLOCK_SIZE;
                 if(stage.hasWallAt(r, c)) {
                     batch.draw(wallImage, x, y);
                 } else if(stage.hasBrickAt(r, c)) {

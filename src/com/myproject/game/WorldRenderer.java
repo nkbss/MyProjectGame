@@ -13,6 +13,7 @@ public class WorldRenderer {
 	private Tank tank;
 	public SpriteBatch batch;
 	public GameScreen gameScreen;
+	public static final int BLOCK_SIZE = 50;
 	World world;
 	private StageRenderer stageRenderer;
 	public WorldRenderer(TankGame tankGame, World world) {
@@ -28,7 +29,7 @@ public class WorldRenderer {
 			batch = tankGame.batch;
 	        batch.begin();
 	        Vector2 pos = world.getTank().getPosition();
-	        batch.draw(tankImg, pos.x, pos.y);
+	        batch.draw(tankImg, pos.x-BLOCK_SIZE/2,TankGame.HEIGHT-pos.y-BLOCK_SIZE/2);
 	        batch.end();
 		}
 }
