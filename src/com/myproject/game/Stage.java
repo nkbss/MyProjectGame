@@ -2,26 +2,25 @@ package com.myproject.game;
 
 public class Stage {
 	private String[] STAGE = new String[]{
-		"####################",
-		"#..................#",
-		"#......bbbbbbb.....#",
-		"#...bb.........bb..#",
-		"#...bb.........bb..#",
-		"#...bb...b..b..bb..#",
-		"#...bb...bSSb..bb..#",
-		"#...bb...bSSb..bb..#",
-		"#...bb.........bb..#",
-		"#........bbbb......#",
-		"#SS..............SS#",
-		"#.....bbbbbbbbb....#",
-		"#..................#",
-		"#...bb..bbbbb..bbb.#",
-		"#........bbb.......#",
-		"#.....bb....bb.....#",
-		"#..................#",
-		"#........###.......#",
-		"#........#$#.......#",
-		"####################",
+		"#####################",
+		"#...................#",
+		"#......bbbbbbb......#",
+		"#...bb.........bb...#",
+		"#...bb.........bb...#",
+		"#...bb..b.b.b..bb...#",
+		"#...bb..bSSSb..bb...#",
+		"#...bb..bSSSb..bb...#",
+		"#....bb...b...bb....#",
+		"#.........b.........#",
+		"#SS....bb...bb....SS#",
+		"#.....bbbbbbbbb.....#",
+		"#...................#",
+		"#..bbb..bbbbb..bbb..#",
+		"#........bbb........#",
+		"#.....bb.....bb.....#",
+		"#........bbb........#",
+		"#........b$b........#",
+		"#####################",
 	};
 	private int height;
 	private int width;
@@ -40,7 +39,13 @@ public class Stage {
         return STAGE[r].charAt(c) == '#';
     }
  
-    public boolean hasDotAt(int r, int c) {
-        return STAGE[r].charAt(c) == '.';
+    public boolean hasBrickAt(int r, int c) {
+        return STAGE[r].charAt(c) == 'b';
+    }
+    public boolean hasMetalAt(int r, int c) {
+        return STAGE[r].charAt(c) == 'S';
+    }
+    public boolean hasBaseAt(int r, int c) {
+        return STAGE[r].charAt(c) == '$';
     }
 }

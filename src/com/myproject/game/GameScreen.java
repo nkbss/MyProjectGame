@@ -16,7 +16,7 @@ public class GameScreen extends ScreenAdapter{
 	WorldRenderer worldRenderer;
 	public GameScreen(TankGame tankGame) {
 	       this.tankGame = tankGame;
-	       tankImg = setImg();
+	       tankImg = new Texture("myTank.png");
 	       world = new World(tankGame);
 	       worldRenderer = new WorldRenderer(tankGame,world);
 	}
@@ -35,23 +35,6 @@ public class GameScreen extends ScreenAdapter{
             tank.move(Tank.DIRECTION_LEFT);
         }
  } 
-		public static Texture setImg(){
-		tankImg = new Texture("tank.png");
-		if(Gdx.input.isKeyPressed(Keys.DOWN)) {
-            tankImg = new Texture("tank.png");
-		}
-        if(Gdx.input.isKeyPressed(Keys.UP)) {
-            tankImg = new Texture("tankDown.png");
-        }
-        if(Gdx.input.isKeyPressed(Keys.RIGHT)) {
-            tankImg = new Texture("tankRight.png");
-        }
-        if(Gdx.input.isKeyPressed(Keys.LEFT)) {
-            tankImg = new Texture("tankLeft.png");
-        }
-        
-	return tankImg;
-	}
 	public void render(float delta) {
 	        update(delta);
 	        Gdx.gl.glClearColor(0, 0, 0, 1);
