@@ -1,7 +1,7 @@
 package com.myproject.game;
 
 public class Stage {
-	private String[] STAGE = new String[]{
+	public static String[] STAGE = new String[]{
 		"#####################",
 		"#...................#",
 		"#......bbbbbbb......#",

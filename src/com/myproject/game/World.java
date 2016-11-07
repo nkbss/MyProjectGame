@@ -7,7 +7,7 @@ public class World {
 	
 	World(TankGame TankGame) {
 		this.TankGame = TankGame;
-		tank = new Tank(425,875);
+		tank = new Tank(425,875,stage);
 		stage = new Stage();
 	}
 	 
