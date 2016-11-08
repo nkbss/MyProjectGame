@@ -1,5 +1,7 @@
 package com.myproject.game;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.math.Vector2;
 
 public class Tank {
@@ -11,8 +13,11 @@ public class Tank {
     public static final int DIRECTION_STILL = 0;
     public static final int SPEED = 5;
     public Stage stage;
+    private String tankImg;
+    private String nextImg;
     private int currentDirection;
     private int nextDirection;
+    World world;
     private static final int [][] DIR_OFFSETS = new int [][] {
         {0,0},
         {0,-1},
@@ -31,6 +36,7 @@ public class Tank {
         currentDirection = DIRECTION_STILL;
         nextDirection = DIRECTION_STILL;
         this.stage = stage;
+        tankImg = "myTank.png";
     }    
  
     public Vector2 getPosition() {
@@ -75,4 +81,13 @@ public class Tank {
 	        }
 	        return true;
 	    }
+
+		public void setNextImg(String nextImg) {
+			this.tankImg = nextImg; 
+		}
+		
+		public String getNextImg(){
+			return tankImg;
+		}
+
 }

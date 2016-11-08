@@ -10,14 +10,12 @@ import com.badlogic.gdx.math.Vector2;
 
 public class GameScreen extends ScreenAdapter{
 	private TankGame tankGame;
-	public static Texture tankImg;
 	Tank tank;
 	World world;
 	WorldRenderer worldRenderer;
 	
 	public GameScreen(TankGame tankGame) {
 	       this.tankGame = tankGame;
-	       tankImg = new Texture("myTank.png");
 	       world = new World(tankGame);
 	       worldRenderer = new WorldRenderer(tankGame,world);
 	}
@@ -25,24 +23,28 @@ public class GameScreen extends ScreenAdapter{
 	public void update(float delta) {
 		world.update(delta);
 		updateTankDirection();
- } 
+	} 
 	
 	private void updateTankDirection(){
 		Tank tank = world.getTank();
 		if(Gdx.input.isKeyPressed(Keys.DOWN)) {
             tank.setNextDirection(Tank.DIRECTION_DOWN);		
+            tank.setNextImg("myTankDown.png");
 		}
         if(Gdx.input.isKeyPressed(Keys.UP)) {
             tank.setNextDirection(Tank.DIRECTION_UP);
+            tank.setNextImg("myTank.png");
         }
         if(Gdx.input.isKeyPressed(Keys.RIGHT)) {
             tank.setNextDirection(Tank.DIRECTION_RIGHT);
+            tank.setNextImg("myTankRight.png");
         }
         if(Gdx.input.isKeyPressed(Keys.LEFT)) {
             tank.setNextDirection(Tank.DIRECTION_LEFT);
+            tank.setNextImg("myTankLeft.png");
         }
 	}
-	
+
 	public void render(float delta) {
 	        update(delta);
 	        Gdx.gl.glClearColor(0, 0, 0, 1);
