@@ -2,13 +2,13 @@ package com.myproject.game;
 
 public class World {
 	private Tank tank;
-	private TankGame TankGame;
 	private Stage stage;
+	private Bullet bullet;
 	
 	World(TankGame TankGame) {
-		this.TankGame = TankGame;
 		tank = new Tank(425,875,stage);
 		stage = new Stage();
+		bullet = new Bullet(425,875,tank);
 	}
 	 
 	Tank getTank() {
@@ -19,7 +19,12 @@ public class World {
 		 return stage;
 	 }
 	 
+	 Bullet getBullet(){
+		 return bullet;
+	 }
+	 
 	 public void update(float delta) {
 	        tank.update();
-	    }
+	 }
+	 
 }

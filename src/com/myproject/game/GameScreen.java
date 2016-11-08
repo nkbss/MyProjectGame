@@ -13,7 +13,7 @@ public class GameScreen extends ScreenAdapter{
 	Tank tank;
 	World world;
 	WorldRenderer worldRenderer;
-	
+	Bullet bullet;
 	public GameScreen(TankGame tankGame) {
 	       this.tankGame = tankGame;
 	       world = new World(tankGame);
@@ -27,24 +27,29 @@ public class GameScreen extends ScreenAdapter{
 	
 	private void updateTankDirection(){
 		Tank tank = world.getTank();
+		Bullet  bullet = world.getBullet();
 		if(Gdx.input.isKeyPressed(Keys.DOWN)) {
             tank.setNextDirection(Tank.DIRECTION_DOWN);		
             tank.setNextImg("myTankDown.png");
+            bullet.setBulletImg("Down");
 		}
         if(Gdx.input.isKeyPressed(Keys.UP)) {
             tank.setNextDirection(Tank.DIRECTION_UP);
             tank.setNextImg("myTank.png");
-        }
+            bullet.setBulletImg("Up");
+        }	
         if(Gdx.input.isKeyPressed(Keys.RIGHT)) {
             tank.setNextDirection(Tank.DIRECTION_RIGHT);
             tank.setNextImg("myTankRight.png");
+            bullet.setBulletImg("Right");
         }
         if(Gdx.input.isKeyPressed(Keys.LEFT)) {
             tank.setNextDirection(Tank.DIRECTION_LEFT);
             tank.setNextImg("myTankLeft.png");
+            bullet.setBulletImg("Left");
         }
 	}
-
+	
 	public void render(float delta) {
 	        update(delta);
 	        Gdx.gl.glClearColor(0, 0, 0, 1);
