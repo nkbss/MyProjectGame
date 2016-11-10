@@ -27,8 +27,6 @@ public class Bullet {
     public Bullet(int x, int y, Tank tank){
     	positionBullet = new Vector2(x,y);
     	positionBullet = tank.getPosition();
-    	positionBullet.x = positionBullet.x+50;
-    	positionBullet.y = positionBullet.y+50;
     	bulletImg = "bullet.png";
 	}
 	public Vector2 getPosition(){
@@ -73,10 +71,9 @@ public class Bullet {
 	}
 	public void renderBullet(){
 		BulletImg = new Texture(getBulletImg());
+		updateBullet(currentDirection);
 		batch.begin();
-	//	if(Gdx.input.isKeyPressed(Keys.Z)){
-		batch.draw(BulletImg, positionBullet.x+1-WorldRenderer.BLOCK_SIZE/2,TankGame.HEIGHT-positionBullet.y+1-WorldRenderer.BLOCK_SIZE/2);
-		//        }
+		batch.draw(BulletImg, positionBullet.x-WorldRenderer.BLOCK_SIZE/2,TankGame.HEIGHT-positionBullet.y-WorldRenderer.BLOCK_SIZE/2);
 		batch.end();
 	}
 }

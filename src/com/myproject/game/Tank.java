@@ -15,7 +15,8 @@ public class Tank {
     public Stage stage;
     private String tankImg;
     private String nextImg;
-    private int currentDirection;
+    private Bullet bullet;
+    public int currentDirection;
     private int nextDirection;
     World world;
     private static final int [][] DIR_OFFSETS = new int [][] {
@@ -85,4 +86,9 @@ public class Tank {
 			return tankImg;
 		}
 
+		private void shoot(){
+			if(Gdx.input.isKeyPressed(Keys.Z)){
+				bullet.renderBullet();
+			}
+		}
 }
