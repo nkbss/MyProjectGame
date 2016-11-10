@@ -84,7 +84,7 @@ public class Tank {
 	        return ((int)position.x) / WorldRenderer.BLOCK_SIZE; 
 	    }
 	 
-	    private boolean canMoveInDirection(int dir) {
+	 private boolean canMoveInDirection(int dir) {
 	        int newRow = this.getRow() + DIR_OFFSETS[dir][1]; 
 	        int newCol = this.getColumn() + DIR_OFFSETS[dir][0]; 
 	        if(Stage.STAGE[newRow].charAt(newCol) != '.'){
@@ -93,11 +93,11 @@ public class Tank {
 	        return true;
 	    }
 
-		public void setNextImg(String nextImg) {
+	public void setNextImg(String nextImg) {
 			this.tankImg = nextImg; 
 		}
 		
-		public String getNextImg(){
+	public String getNextImg(){
 			return tankImg;
 		}
 }

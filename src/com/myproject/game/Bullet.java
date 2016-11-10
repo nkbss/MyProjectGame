@@ -9,6 +9,7 @@ import com.badlogic.gdx.math.Vector2;
 
 public class Bullet {
 	private Vector2 positionBullet;
+	private Vector2 posSpriteBullet;
 	public boolean canShoot;
 	private Texture bulletImg;
 	World world;
@@ -34,6 +35,9 @@ public class Bullet {
     	bulletImg = new Texture(setBulletImg(currentDirection));
     	bulletSprite = new Sprite(bulletImg);
     	bulletSprite.setPosition(positionBullet.x-WorldRenderer.BLOCK_SIZE/2, TankGame.HEIGHT-positionBullet.y-WorldRenderer.BLOCK_SIZE/2);
+    	posSpriteBullet = new Vector2();
+    	posSpriteBullet.x = bulletSprite.getX();
+    	posSpriteBullet.y = bulletSprite.getY();
     }
 
 	public String setBulletImg(int dir) {
@@ -52,27 +56,33 @@ public class Bullet {
 	}
 
 	public void update(){
-		if(currentDirection == 1){
-			positionBullet.y -= SPEED ;
+		/*if(currentDirection == 1){
+		;
 		}
 		else if(currentDirection == 2){
-			positionBullet.x += SPEED ;
+		
 		}
 		else if(currentDirection == 3){
-			positionBullet.y += SPEED ;
+		
 		}
 		else if(currentDirection == 4){
-			positionBullet.x -= SPEED ;
-		}
-		//		positionBullet.x += SPEED * DIR_OFFSETS[currentDirection][0];
-//	    positionBullet.y += SPEED * DIR_OFFSETS[currentDirection][1];
-	    //bulletSprite.setPosition(positionBullet.x, positionBullet.y);
+			
+		}*/
+		posSpriteBullet.x += SPEED * DIR_OFFSETS[currentDirection][0];
+	    posSpriteBullet.y += SPEED * DIR_OFFSETS[currentDirection][1];
+	 //   bulletSprite.setPosition(positionBullet.x, positionBullet.y);
 	}
 
 	public void render(){
-		System.out.println(positionBullet.x + "+" + positionBullet.y +"," + tank.getPosition());
+		//System.out.println(positionBullet.x + "+" + positionBullet.y +"," + tank.getPosition());
 		update();
+    	bulletSprite.setPosition(posSpriteBullet.x-WorldRenderer.BLOCK_SIZE/2, TankGame.HEIGHT-posSpriteBullet.y-WorldRenderer.BLOCK_SIZE/2);
+
+		bulletImg = new Texture(setBulletImg(currentDirection));
+		batch = TankGame.batch;
 		batch.begin();
+		//batch.draw(bulletImg, positionBullet.x-WorldRenderer.BLOCK_SIZE/2,TankGame.HEIGHT-positionBullet.y-WorldRenderer.BLOCK_SIZE/2);
+	
 		bulletSprite.draw(batch);
 		batch.end();
 	}
