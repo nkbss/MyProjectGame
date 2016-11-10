@@ -3,19 +3,20 @@ package com.myproject.game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 
 public class Bullet {
 	private Vector2 positionBullet;
 	public boolean canShoot;
-	private String bulletImg;
-	private Texture BulletImg;
+	private Texture bulletImg;
 	World world;
 	private Tank tank;
-	public static final int SPEED = 5;
-	private int currentDirection;
+	public static final int SPEED = 2;
+	private int currentDirection = 1;
 	public SpriteBatch batch;
+	private Sprite bulletSprite;
 	private static final int [][] DIR_OFFSETS = new int [][] {
         {0,0},
         {0,-1},
@@ -24,56 +25,55 @@ public class Bullet {
         {-1,0}
     };
 	
-    public Bullet(int x, int y, Tank tank){
-    	positionBullet = new Vector2(x,y);
+    public Bullet(Tank tank){
+    	positionBullet = new Vector2();
     	positionBullet = tank.getPosition();
-    	bulletImg = "bullet.png";
-	}
-	public Vector2 getPosition(){
-		positionBullet = world.getTank().getPosition();
-		return positionBullet;
-	}
-	
-	public boolean pressShoot(){
-		canShoot = false;
-		if(Gdx.input.isKeyPressed(Keys.Z)){
-			canShoot = true;
-		}
-		return canShoot;
-	}
+    	batch = TankGame.batch;
+    	currentDirection = tank.nextDirection;
+    	this.tank = tank;
+    	bulletImg = new Texture(setBulletImg(currentDirection));
+    	bulletSprite = new Sprite(bulletImg);
+    	bulletSprite.setPosition(positionBullet.x-WorldRenderer.BLOCK_SIZE/2, TankGame.HEIGHT-positionBullet.y-WorldRenderer.BLOCK_SIZE/2);
+    }
 
-	public void setBulletImg(String stageTank){
-		if(stageTank == "Up"){
-			bulletImg = "bullet.png";
-			currentDirection = 1;
+	public String setBulletImg(int dir) {
+		if(dir == 1){
+			return "bullet.png";
 		}
-		else if(stageTank == "Down"){
-			bulletImg = "bulletDown.png";
-			currentDirection = 3;
+		else if(dir == 3){
+			return "bulletDown.png";
 		}
-		else if(stageTank == "Right"){
-			bulletImg = "bulletRight.png";
-			currentDirection = 2;
+		else if(dir == 2){
+			return "bulletRight.png";
 		}
-		else if(stageTank == "Left"){
-			bulletImg = "bulletLeft.png";
-			currentDirection = 4;
+		else {
+			return "bulletLeft.png";
 		}
 	}
 
-	public String getBulletImg(){
-		return bulletImg;
+	public void update(){
+		if(currentDirection == 1){
+			positionBullet.y -= SPEED ;
+		}
+		else if(currentDirection == 2){
+			positionBullet.x += SPEED ;
+		}
+		else if(currentDirection == 3){
+			positionBullet.y += SPEED ;
+		}
+		else if(currentDirection == 4){
+			positionBullet.x -= SPEED ;
+		}
+		//		positionBullet.x += SPEED * DIR_OFFSETS[currentDirection][0];
+//	    positionBullet.y += SPEED * DIR_OFFSETS[currentDirection][1];
+	    //bulletSprite.setPosition(positionBullet.x, positionBullet.y);
 	}
 
-	public void updateBullet(int dir){
-		 positionBullet.x += SPEED * DIR_OFFSETS[dir][0];
-	     positionBullet.y += SPEED * DIR_OFFSETS[dir][1];
-	}
-	public void renderBullet(){
-		BulletImg = new Texture(getBulletImg());
-		updateBullet(currentDirection);
+	public void render(){
+		System.out.println(positionBullet.x + "+" + positionBullet.y +"," + tank.getPosition());
+		update();
 		batch.begin();
-		batch.draw(BulletImg, positionBullet.x-WorldRenderer.BLOCK_SIZE/2,TankGame.HEIGHT-positionBullet.y-WorldRenderer.BLOCK_SIZE/2);
+		bulletSprite.draw(batch);
 		batch.end();
 	}
 }

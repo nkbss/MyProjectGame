@@ -8,7 +8,7 @@ public class World {
 	World(TankGame TankGame) {
 		tank = new Tank(425,875,stage);
 		stage = new Stage();
-		bullet = new Bullet(425,875,tank);
+		bullet = new Bullet(tank);
 	}
 	 
 	Tank getTank() {
@@ -24,7 +24,7 @@ public class World {
 	 }
 	 
 	 public void update(float delta) {
-	        tank.update();
+	       
 	 }
 	 
 }

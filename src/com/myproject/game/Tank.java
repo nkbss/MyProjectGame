@@ -1,5 +1,7 @@
 package com.myproject.game;
 
+import java.util.ArrayList;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.math.Vector2;
@@ -17,7 +19,8 @@ public class Tank {
     private String nextImg;
     private Bullet bullet;
     public int currentDirection;
-    private int nextDirection;
+    public int nextDirection;
+    private ArrayList<Bullet> bullets;
     World world;
     private static final int [][] DIR_OFFSETS = new int [][] {
         {0,0},
@@ -28,6 +31,7 @@ public class Tank {
     };
     
     public Tank(int x, int y, Stage stage) {
+    	bullets = new ArrayList<Bullet>();
         position = new Vector2(x,y);
         currentDirection = DIRECTION_STILL;
         nextDirection = DIRECTION_STILL;
@@ -48,6 +52,10 @@ public class Tank {
         return ((((int)position.x - blockSize/2) % blockSize) == 0) &&
                 ((((int)position.y - blockSize/2) % blockSize) == 0);
     }
+    
+	private void shoot(){
+		bullets.add(new Bullet(this));
+	}
      
 	 public void update() {
 		 if(isAtCenter()) {
@@ -59,7 +67,14 @@ public class Tank {
 	        }
 	        position.x += SPEED * DIR_OFFSETS[currentDirection][0];
 	        position.y += SPEED * DIR_OFFSETS[currentDirection][1];
+	        
+	    if(Gdx.input.isKeyPressed(Keys.Z)){
+			shoot();
+		}
+	    for (Bullet bullet : bullets) {
+	    	bullet.render();
 	    }
+	 }
 	 
 	 private int getRow() {
 	        return ((int)position.y) / WorldRenderer.BLOCK_SIZE; 
@@ -84,11 +99,5 @@ public class Tank {
 		
 		public String getNextImg(){
 			return tankImg;
-		}
-
-		private void shoot(){
-			if(Gdx.input.isKeyPressed(Keys.Z)){
-				bullet.renderBullet();
-			}
 		}
 }
